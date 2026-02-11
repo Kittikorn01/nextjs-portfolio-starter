@@ -25,6 +25,7 @@ pipeline {
         container('my-builder') {
           sh 'npm --version'
           sh 'node --version'
+          sh 'yarn --version'
         }
       }
     }
@@ -34,14 +35,14 @@ pipeline {
           sh 'npm ci'
           sh 'npm run build'
           sh 'npm install --global yarn'
-          sh 'yarn --version'
         }
       }
     }
     stage('Test Build') {
       steps {
         container('my-builder') {
-          //sh 'npm run test'
+          sh 'npm run test'
+          sh 'yarn run test'
         }
       }
     }
