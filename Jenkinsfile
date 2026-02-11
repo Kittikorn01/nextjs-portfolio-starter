@@ -33,6 +33,9 @@ pipeline {
         container('my-builder') {
           sh 'npm ci'
           sh 'npm run build'
+          sh 'rm -rf node_modules'
+          sh 'rm yarn.lock'
+          sh 'yarn install'
           //sh 'npm install --global yarn'
           //sh 'yarn --version'
         }
