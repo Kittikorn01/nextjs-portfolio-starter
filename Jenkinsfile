@@ -52,14 +52,10 @@ pipeline {
             vercel link --project $VERCEL_PROJECT_NAME --token $VERCEL_TOKEN --yes
             vercel --token $VERCEL_TOKEN --prod --confirm
           '''
+          sh 'cd frontend && yarn build'
         }
       }
     }
  
-  }
-  post {
-    always {
-      junit 'test-results/junit.xml'
-    }
   }
 }
