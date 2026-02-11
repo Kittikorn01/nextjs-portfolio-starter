@@ -33,7 +33,8 @@ pipeline {
         container('my-builder') {
           sh 'npm ci'
           sh 'npm run build'
-          //sh 'yarn build'
+          sh 'npm install --global yarn'
+          sh 'yarn --version'
         }
       }
     }
@@ -41,8 +42,6 @@ pipeline {
       steps {
         container('my-builder') {
           sh 'npm run test'
-          sh 'npm install --global yarn'
-          sh 'yarn --version'
         }
       }
     }
