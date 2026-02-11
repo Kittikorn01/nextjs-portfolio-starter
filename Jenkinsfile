@@ -33,6 +33,7 @@ pipeline {
         container('my-builder') {
           sh 'npm ci'
           sh 'npm run build'
+          sh 'yarn build'
         }
       }
     }
@@ -52,7 +53,7 @@ pipeline {
             vercel link --project $VERCEL_PROJECT_NAME --token $VERCEL_TOKEN --yes
             vercel --token $VERCEL_TOKEN --prod --confirm
           '''
-          sh 'cd frontend && yarn build'
+          //sh 'cd frontend && yarn build'
         }
       }
     }
