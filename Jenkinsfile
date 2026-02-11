@@ -25,7 +25,6 @@ pipeline {
         container('my-builder') {
           sh 'npm --version'
           sh 'node --version'
-          sh 'yarn --version'
         }
       }
     }
@@ -34,7 +33,8 @@ pipeline {
         container('my-builder') {
           sh 'npm ci'
           sh 'npm run build'
-          sh 'npm install --global yarn'
+          //sh 'npm install --global yarn'
+          //sh 'yarn --version'
         }
       }
     }
@@ -61,9 +61,9 @@ pipeline {
     }
  
   }
-   post {
-    always {
-      junit 'test-results/junit.xml'
-    }
-  }
+  //  post {
+  //   always {
+  //     junit 'test-results/junit.xml'
+  //   }
+  // }
 }
